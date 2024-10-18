@@ -20,11 +20,8 @@ const testCases = [
 ];
 
 describe('simpleCalculator', () => {
-  test.each(testCases)(
-    'using test cases',
-    ({ a, b, action, expected }) => {
-      const result = simpleCalculator({ a, b, action });
-      expect(result).toBe(expected);
-    },
-  );
+  test.each(testCases)('using test cases', ({ a, b, action, expected }) => {
+    const result = simpleCalculator({ a, b, action });
+    expect(result).toBe(expected);
+  });
 });

@@ -28,17 +28,17 @@ describe('simpleCalculator tests', () => {
   test('should exponentiate two numbers', () => {
     const input = { a: 2, b: 3, action: Action.Exponentiate };
     const result = simpleCalculator(input);
-    expect(result).toBe(8); 
+    expect(result).toBe(8);
   });
 
   test('should return null for invalid action', () => {
-    const input = { a: 5, b: 2, action: '%' }; 
+    const input = { a: 5, b: 2, action: '%' };
     const result = simpleCalculator(input);
     expect(result).toBeNull();
   });
 
   test('should return null for invalid arguments', () => {
-    const input = { a: '5', b: 2, action: Action.Add }; 
+    const input = { a: '5', b: 2, action: Action.Add };
     const result = simpleCalculator(input);
     expect(result).toBeNull();
   });
