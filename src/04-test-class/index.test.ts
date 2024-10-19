@@ -5,6 +5,7 @@ import {
   SynchronizationFailedError,
   TransferFailedError,
 } from './index';
+import lodash from 'lodash';
 
 describe('BankAccount', () => {
   let account: BankAccount;
@@ -56,10 +57,16 @@ describe('BankAccount', () => {
     expect(anotherAccount.getBalance()).toBe(80);
   });
 
-  test('fetchBalance should return number in case if request did not fail', async () => {
-    const balance = await account.fetchBalance();
-    expect(balance).toBeGreaterThanOrEqual(0);
-    expect(balance).toBeLessThanOrEqual(100);
+  test('fetchBalance should return number in case if request did not failed', async () => {
+    const value = getBankAccount(0);
+    const randomMock = jest
+      .spyOn(lodash, 'random')
+      .mockReturnValueOnce(33)
+      .mockReturnValueOnce(1);
+    const balance = await value.fetchBalance();
+
+    expect(randomMock).toHaveBeenCalled();
+    expect(balance).toEqual(expect.any(Number));
   });
 
   test('should set new balance if fetchBalance returned number', async () => {
